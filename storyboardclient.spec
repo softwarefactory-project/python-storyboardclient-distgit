@@ -4,7 +4,7 @@
 
 Name:           python-storyboardclient
 Version:        0.1
-Release:        1%{dist}
+Release:        1%{checkout}%{dist}
 Summary:        Python Client library for StoryBoard
 
 License:        ASL 2.0
@@ -37,7 +37,6 @@ BuildRequires:  python2-oslo-serialization
 BuildRequires:  python2-oslo-utils
 BuildRequires:  python-requests
 BuildRequires:  python-six
-BuildRequires:  python2-stevedore
 
 %description
 Python Client library for StoryBoard
@@ -68,7 +67,6 @@ BuildRequires:  python2-oslo-serialization
 BuildRequires:  python2-oslo-utils
 BuildRequires:  python-requests
 BuildRequires:  python-six
-BuildRequires:  python2-stevedore
 
 %description -n python2-storyboardclient
 Python Client library for StoryBoard
@@ -92,5 +90,8 @@ nosetests -v
 %{python2_sitelib}/*
 
 %changelog
+* Tue Feb 22 2017 Fabien Boucher <fboucher@redhat.com> - 0.1-02212017gitcfdfaf8
+- Dependencies fix
+
 * Tue Feb 21 2017 Fabien Boucher <fboucher@redhat.com> - 0.1-02212017gitcfdfaf8
 - Initial packaging
