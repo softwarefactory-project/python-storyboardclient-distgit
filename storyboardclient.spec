@@ -4,12 +4,14 @@
 
 Name:           python-storyboardclient
 Version:        0.1
-Release:        1%{checkout}%{dist}
+Release:        2%{checkout}%{dist}
 Summary:        Python Client library for StoryBoard
 
 License:        ASL 2.0
 URL:            https://github.com/openstack-infra/${name}
-Source0:        https://github.com/openstack-infra/%{name}/archive/%{commit0}.tar.gz#/%{name}-%{shortcommit0}.tar.gz
+Source0:        https://github.com/openstack-infra/%{name}/archive/%{commit0}.tar.gz
+
+Source1:        fix-distibution-name.patch 
 
 BuildArch:      noarch
 
@@ -73,6 +75,7 @@ Python Client library for StoryBoard
 
 %prep
 %autosetup -n %{name}-%{commit0}
+patch -p0 < %{SOURCE1}
 
 %build
 export PBR_VERSION=0.1
@@ -90,6 +93,9 @@ nosetests -v
 %{python2_sitelib}/*
 
 %changelog
+* Wed Mar 01 2017 Fabien Boucher <fboucher@redhat.com> - 0.1-202212017gitcfdfaf8
+- Fix python package distribution name
+
 * Tue Feb 22 2017 Fabien Boucher <fboucher@redhat.com> - 0.1-02212017gitcfdfaf8
 - Dependencies fix
 
