@@ -1,10 +1,10 @@
 %global         commit0 cfdfaf866ca5da63ac734552772e1fe2f87c6543
 %global         shortcommit0 %(c=%{commit0}; echo ${c:0:7})
-%global         checkout 02212017git%{shortcommit0}
+%global         checkout 20170221git%{shortcommit0}
 
 Name:           python-storyboardclient
 Version:        0.1
-Release:        2%{checkout}%{dist}
+Release:        3%{checkout}%{dist}
 Summary:        Python Client library for StoryBoard
 
 License:        ASL 2.0
@@ -93,6 +93,9 @@ nosetests -v
 %{python2_sitelib}/*
 
 %changelog
+* Tue Mar 07 2017 Tristan Cacqueray <tdecacqu@redhat.com> - 0.1-320170221gitcfdfaf8
+- Renamed spec file and fix release number
+
 * Wed Mar 01 2017 Fabien Boucher <fboucher@redhat.com> - 0.1-202212017gitcfdfaf8
 - Fix python package distribution name
 
