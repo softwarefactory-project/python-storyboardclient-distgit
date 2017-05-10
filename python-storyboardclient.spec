@@ -4,7 +4,7 @@
 
 Name:           python-storyboardclient
 Version:        0.1
-Release:        4.%{checkout}%{dist}
+Release:        5.%{checkout}%{dist}
 Summary:        Python Client library for StoryBoard
 
 License:        ASL 2.0
@@ -12,6 +12,8 @@ URL:            https://github.com/openstack-infra/${name}
 Source0:        https://github.com/openstack-infra/%{name}/archive/%{commit0}.tar.gz
 
 Source1:        fix-distibution-name.patch 
+
+Patch0:         0001-Set-a-by-default-retry.patch
 
 BuildArch:      noarch
 
@@ -74,7 +76,7 @@ BuildRequires:  python-six
 Python Client library for StoryBoard
 
 %prep
-%autosetup -n %{name}-%{commit0}
+%autosetup -n %{name}-%{commit0} -p1
 patch -p0 < %{SOURCE1}
 
 %build
@@ -93,6 +95,9 @@ nosetests -v
 %{python2_sitelib}/*
 
 %changelog
+* Wed May 10 2017 Fabien Boucher <fboucher@redhat.com> - 0.1-5
+- Patch to add reconnection capability
+
 * Fri Apr 28 2017 Fabien Boucher <fboucher@redhat.com> - 0.1-4
 - Bump to last available version this day
 
