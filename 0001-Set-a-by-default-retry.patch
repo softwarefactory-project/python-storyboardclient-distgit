@@ -1,0 +1,33 @@
+From b9367a7de0ed01ac375d1a7f184ede864dc78c56 Mon Sep 17 00:00:00 2001
+From: Fabien Boucher <fboucher@redhat.com>
+Date: Wed, 10 May 2017 22:01:54 +0200
+Subject: [PATCH] Set a by default retry
+
+---
+ storyboardclient/_apiclient/client.py | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/storyboardclient/_apiclient/client.py b/storyboardclient/_apiclient/client.py
+index f613e81..3fb3022 100644
+--- a/storyboardclient/_apiclient/client.py
++++ b/storyboardclient/_apiclient/client.py
+@@ -37,6 +37,7 @@ except ImportError:
+ from oslo_utils import encodeutils
+ from oslo_utils import importutils
+ import requests
++from requests.adapters import HTTPAdapter
+ 
+ from storyboardclient._i18n import _
+ from storyboardclient._apiclient import exceptions
+@@ -98,6 +99,8 @@ class HTTPClient(object):
+ 
+         # requests within the same session can reuse TCP connections from pool
+         self.http = http or requests.Session()
++        self.http.mount('https://', HTTPAdapter(max_retries=5))
++        self.http.mount('http://', HTTPAdapter(max_retries=5))
+ 
+         self.cached_token = None
+         self.last_request_id = None
+-- 
+2.9.3
+
