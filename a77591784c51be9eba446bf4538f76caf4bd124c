@@ -1,0 +1,8 @@
+Code-Review+2: Nicolas HICHER <nhicher@redhat.com>
+Workflow+1: Tristan de Cacqueray <tdecacqu@redhat.com>
+Verified+2: Zuul CI <zuul@softwarefactory-project.io>
+Submitted-by: Zuul CI <zuul@softwarefactory-project.io>
+Submitted-at: Fri, 23 Nov 2018 09:23:49 +0000
+Reviewed-on: https://softwarefactory-project.io/r/14326
+Project: software-factory/python-storyboardclient-distgit
+Branch: refs/heads/master
